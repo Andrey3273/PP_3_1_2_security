@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<body>
+<div>
+    <h2>User Info</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Lastname</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        <tr>
+            <td th:utext="${user.username}">name</td>
+            <td th:utext="${user.lastname}">lastname</td>
+            <td th:utext="${user.password}">password</td>
+            <td th:utext="${user.email}">email</td>
+            <td th:each="role: ${roles}"><p th:text="${role.name}"></p></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <a th:href="@{/logout}">LOGOUT</a>
+</div>
+</body>
+</html>

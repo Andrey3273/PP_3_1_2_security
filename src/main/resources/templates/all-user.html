@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <style>table th, table td {padding: 5px;}</style>
+</head>
+<body>
+<h1>Users</h1>
+<br>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Operations</th>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+        <td th:utext="${user.username}">name</td>
+        <td th:utext="${user.lastname}">lastname</td>
+        <td th:utext="${user.password}">password</td>
+        <td th:utext="${user.email}">email</td>
+        <td><form th:method="GET" th:action="@{/{id}/edit(id=${user.getId()})}">
+            <input type="submit" value="Update"/>
+        </form></td>
+        <td><form th:method="DELETE" th:action="@{/remove/{id}(id=${user.getId()})}">
+            <input type="submit" value="Delete"/>
+        </form></td>
+
+
+    </tr>
+
+
+</table>
+
+<br>
+
+<input type="button" value="Add"
+       onClick="window.location.href = 'admin/new'"/>
+<br>
+<br>
+<a th:href="@{/logout}">LOGOUT</a>
+</body>
+</html>
